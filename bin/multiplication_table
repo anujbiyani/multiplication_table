@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require_relative '../lib/multiplication_table_cli'
+
+MultiplicationTableCli.new(ARGV.dup)
