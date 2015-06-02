@@ -5,6 +5,13 @@ require 'prime_finder'
 require 'prime'
 
 RSpec.describe PrimeFinder do
+  describe '.find_first' do
+    it 'finds the first N prime numbers' do
+      expect(PrimeFinder.find_first(5)).to match_array Prime.first 5
+      expect(PrimeFinder.find_first(10)).to match_array Prime.first 10
+    end
+  end
+
   describe '.is_prime?' do
     it 'is true for prime numbers'do
       Prime.first(10).each do |known_prime|
