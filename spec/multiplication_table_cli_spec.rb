@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'multiplication_table_helper'
 require 'multiplication_table_cli'
 
 RSpec.describe MultiplicationTableCli do
