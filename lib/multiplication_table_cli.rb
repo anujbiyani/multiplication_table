@@ -1,4 +1,5 @@
 require 'optparse'
+require 'multiplication_table'
 
 class MultiplicationTableCli
   attr_reader :count
@@ -14,6 +15,10 @@ class MultiplicationTableCli
       end
     end.parse!(argv)
 
-    @count = options[:count]
+    @count = options[:count] || 10
+  end
+
+  def execute!
+    MultiplicationTable.new(count: count).run
   end
 end

@@ -1,7 +1,7 @@
 class PrimeFinder
   class << self
     def find_first(count)
-      primes = Set.new
+      primes = []
       current = 2
 
       while primes.length < count

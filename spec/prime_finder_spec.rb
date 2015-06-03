@@ -7,8 +7,8 @@ require 'prime'
 RSpec.describe PrimeFinder do
   describe '.find_first' do
     it 'finds the first N prime numbers' do
-      expect(PrimeFinder.find_first(5)).to match_array Prime.first 5
-      expect(PrimeFinder.find_first(10)).to match_array Prime.first 10
+      expect(PrimeFinder.find_first(5)).to eq Prime.first 5
+      expect(PrimeFinder.find_first(10)).to eq Prime.first 10
     end
   end
 

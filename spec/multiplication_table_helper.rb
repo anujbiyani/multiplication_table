@@ -1,4 +1,5 @@
 require 'multiplication_table_helper'
+require 'awesome_print'
 
 RSpec::Matchers.define :be_prime do
   match do |actual|
