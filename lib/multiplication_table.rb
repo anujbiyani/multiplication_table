@@ -8,20 +8,15 @@ class MultiplicationTable
   end
 
   def run
-    output.print '|'.rjust(column_width)
-    output.print prime_numbers.map { |s| s.to_s.rjust(column_width) }.join('')
-    print_newline
+    print_header_row
+    print_divider_row
 
-    output.print '+'.rjust(column_width, '-')
-    output.print '-'.rjust(prime_numbers.length * column_width, '-')
-    print_newline
-
-    prime_numbers.each do |row_number|
-      output.print row_number.to_s.rjust(column_width - 1)
+    prime_numbers.each do |number_for_row|
+      output.print number_for_row.to_s.rjust(column_width - 1)
       output.print '|'
 
       prime_numbers.each do |column_number|
-        output.print (row_number * column_number).to_s.rjust(column_width)
+        output.print (number_for_row * column_number).to_s.rjust(column_width)
       end
 
       print_newline
@@ -33,7 +28,19 @@ class MultiplicationTable
   private
 
   attr_reader :prime_numbers, :column_width, :output
-  
+
+  def print_divider_row
+    output.print '+'.rjust(column_width, '-')
+    output.print '-'.rjust(prime_numbers.length * column_width, '-')
+    print_newline
+  end
+
+  def print_header_row
+    output.print '|'.rjust(column_width)
+    output.print prime_numbers.map { |s| s.to_s.rjust(column_width) }.join('')
+    print_newline
+  end
+
   def print_newline
     output.print "\n"
   end
