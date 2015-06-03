@@ -18,7 +18,7 @@ class PrimeFinder
       return false if number < FIRST_PRIME
       return true if number == FIRST_PRIME
 
-      (number - 1).downto(2).each do |operand|
+      2.upto(number - 1).each do |operand|
         return false if number % operand == 0
       end
 
