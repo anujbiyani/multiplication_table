@@ -1,32 +1,27 @@
 require 'prime_finder'
 
 class MultiplicationTable
-  COLUMN_WIDTH = 5
-
-  attr_reader :count, :output
-
   def initialize(count: 10, output: STDOUT)
-    @count = count
+    @prime_numbers = PrimeFinder.find_first(count)
     @output = output
+    @column_width = (prime_numbers.last * prime_numbers.last).to_s.length + 1
   end
 
   def run
-    prime_numbers = PrimeFinder.find_first(count)
-
-    output.print '|'.rjust(COLUMN_WIDTH)
-    output.print prime_numbers.map { |s| s.to_s.rjust(COLUMN_WIDTH) }.join('')
+    output.print '|'.rjust(column_width)
+    output.print prime_numbers.map { |s| s.to_s.rjust(column_width) }.join('')
     print_newline
 
-    output.print '+'.rjust(COLUMN_WIDTH, '-')
-    output.print '-'.rjust(count * COLUMN_WIDTH, '-')
+    output.print '+'.rjust(column_width, '-')
+    output.print '-'.rjust(prime_numbers.length * column_width, '-')
     print_newline
 
     prime_numbers.each do |row_number|
-      output.print row_number.to_s.rjust(COLUMN_WIDTH - 1)
+      output.print row_number.to_s.rjust(column_width - 1)
       output.print '|'
 
       prime_numbers.each do |column_number|
-        output.print (row_number * column_number).to_s.rjust(COLUMN_WIDTH)
+        output.print (row_number * column_number).to_s.rjust(column_width)
       end
 
       print_newline
@@ -37,6 +32,8 @@ class MultiplicationTable
 
   private
 
+  attr_reader :prime_numbers, :column_width, :output
+  
   def print_newline
     output.print "\n"
   end
