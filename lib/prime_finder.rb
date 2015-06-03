@@ -1,8 +1,10 @@
 class PrimeFinder
+  FIRST_PRIME = 2
+
   class << self
     def find_first(count)
       primes = []
-      current = 2
+      current = FIRST_PRIME
 
       while primes.length < count
         primes << current if is_prime?(current)
@@ -13,9 +15,8 @@ class PrimeFinder
     end
 
     def is_prime?(number)
-      return false if number == 0
-      return false if number == 1
-      return true if number == 2
+      return false if number < FIRST_PRIME
+      return true if number == FIRST_PRIME
 
       (number - 1).downto(2).each do |operand|
         return false if number % operand == 0
