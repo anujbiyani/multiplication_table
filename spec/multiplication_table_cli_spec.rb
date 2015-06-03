@@ -7,6 +7,11 @@ RSpec.describe MultiplicationTableCli do
       expect(MultiplicationTableCli.new(%w(--count 10)).count).to eq 10
       expect(MultiplicationTableCli.new(%w(-c 10)).count).to eq 10
     end
+
+    it 'raises an error if given an invalid number' do
+      expect { MultiplicationTableCli.new(%w(-c -10)) }.to raise_error OptionParser::InvalidArgument
+      expect { MultiplicationTableCli.new(%w(-c 0)) }.to raise_error OptionParser::InvalidArgument
+    end
   end
 
   describe '#execute!' do
