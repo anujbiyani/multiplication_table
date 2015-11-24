@@ -1,5 +1,8 @@
 # Multiplication Table for Prime Numbers
 
+Wrote this code for an interview. The original ask was to output a table of primes without using a library to generate
+prime numbers. There were other requirements, can't remember them all.
+
 ## Usage
 ```
 $ bin/multiplication_table --help
